@@ -2,14 +2,21 @@ export default {
   base: '/',
   appearance: true,
   title: '云族纪',
-  titleTemplate: '云族纪 - 家族族谱应用',
-  description: '云族纪 - 支持分身体系、跨家关系、归档可逆的家族族谱应用',
+  titleTemplate: '云族纪 - 家族管理应用',
+  description: '云族纪 - 家族管理应用：人际关系族谱网络 + 家族事务，支持分身体系、自动称呼、归档可逆、私有部署',
   lastUpdated: true,
   themeConfig: {
     logo: '/images/logo.png',
     siteTitle: '云族纪',
     nav: [
       { text: '功能', link: '/guide/features' },
+      {
+        text: '模块',
+        items: [
+          { text: '人际关系画布', link: '/guide/canvas' },
+          { text: '家族事务（建设中）', link: '/guide/family-affairs' }
+        ]
+      },
       {
         text: '技术',
         items: [
@@ -37,6 +44,14 @@ export default {
           { text: '这是什么？', link: '/guide/introduction' },
           { text: '功能亮点', link: '/guide/features' },
           { text: '现状与路线图', link: '/about/roadmap' }
+        ]
+      },
+      {
+        text: '功能模块',
+        collapsed: false,
+        items: [
+          { text: '人际关系画布', link: '/guide/canvas' },
+          { text: '家族事务（建设中）', link: '/guide/family-affairs' }
         ]
       },
       {
