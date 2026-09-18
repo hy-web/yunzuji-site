@@ -1,4 +1,27 @@
-/* 云族纪自定义样式 */
-.home-hero {
-  background: linear-gradient(135deg, var(--vp-c-bg-alt) 0%, var(--vp-c-bg) 100%);
+/* ============================================================
+   云族纪自定义样式
+   ============================================================ */
+
+/* 首页 hero 区：暖棕渐变，浅/暗两套由 vars.css 的变量驱动 */
+.VPHero .VPImage {
+  border-radius: 16px;
+}
+
+.home-hero,
+.VPHero {
+  background: linear-gradient(
+    135deg,
+    var(--yz-hero-gradient-from) 0%,
+    var(--yz-hero-gradient-to) 100%
+  );
+}
+
+/* 功能卡片：轻微暖底 + 细边框，暗色下同步 */
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* 让首页整体铺满渐变背景（默认 hero 与 features 之间会露出纯色） */
+.VPHome {
+  background: var(--yz-hero-gradient-to);
 }

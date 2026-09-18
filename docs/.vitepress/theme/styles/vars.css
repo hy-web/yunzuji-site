@@ -1,9 +1,43 @@
-/* 云族纪主题色 - 暖棕系 */
+/* ============================================================
+   云族纪主题色 —— 暖棕古籍风
+   浅色：米黄宣纸底 + 深棕墨字
+   暗色：暖深棕底（不用纯灰，保持与品牌同一色温）
+   ============================================================ */
+
+/* ---------- 浅色模式（默认） ---------- */
 :root {
+  /* 品牌主色：深棕 */
   --vp-c-brand-1: #8A5A2B;
   --vp-c-brand-2: #6F4726;
   --vp-c-brand-3: #A67B4B;
-  --vp-c-brand-softer: rgba(138, 90, 43, 0.12);
+  --vp-c-brand-soft: rgba(138, 90, 43, 0.14);
+
+  /* 背景：米黄宣纸 */
   --vp-c-bg: #FBF4E4;
-  --vp-c-bg-alt: #F6EEDF;
+  --vp-c-bg-alt: #F3E9D4;
+  --vp-c-bg-soft: #F6EEDF;
+  --vp-c-bg-elv: #FFFDF7;
+
+  /* 首页 hero 渐变两端 */
+  --yz-hero-gradient-from: #F3E9D4;
+  --yz-hero-gradient-to: #FBF4E4;
+}
+
+/* ---------- 暗色模式 ---------- */
+.dark {
+  /* 暗色下品牌色调亮，保证在深底上的对比度 */
+  --vp-c-brand-1: #D0A877;
+  --vp-c-brand-2: #E0C098;
+  --vp-c-brand-3: #A67B4B;
+  --vp-c-brand-soft: rgba(208, 168, 119, 0.16);
+
+  /* 背景：暖深棕（带一点褐，而非冷灰） */
+  --vp-c-bg: #1B1713;
+  --vp-c-bg-alt: #14110D;
+  --vp-c-bg-soft: #241F18;
+  --vp-c-bg-elv: #2B251D;
+
+  /* 首页 hero 渐变两端 */
+  --yz-hero-gradient-from: #14110D;
+  --yz-hero-gradient-to: #1B1713;
 }
