@@ -42,11 +42,6 @@
   width: auto;
   min-width: 0;
 }
-.VPHero .image-container .image {
-  background: transparent;
-  width: auto;
-  height: auto;
-}
 .VPHero .pm-phone {
   width: 250px;
   height: 510px;
@@ -57,11 +52,19 @@
     height: 466px;
   }
 }
-/* 中屏以下 VitePress 堆叠排版，隐藏 hero 手机，避免压住标题；
-   首页功能卡之后的产品预览区仍会展示手机占位 */
+/* 中屏以下（≤959，与 VitePress 的 hero 堆叠断点对齐）：
+   手机插槽会让 hero 带上 has-image 布局。若只隐藏内层 .image-container，
+   外层 .image 仍保留负 margin、.container 高度仍按"有图"计算，会把文本区
+   顶到固定导航栏底下（name 顶部溢出为负）。这里整块隐藏 .image 并让容器
+   高度回归自适应，hero 即等同无图首页的正常堆叠；手机占位改由功能卡之后的
+   "产品形态预览"区展示。 */
 @media (max-width: 959px) {
-  .VPHero .image-container {
+  .VPHero .image {
     display: none !important;
+  }
+  .VPHero .container {
+    height: auto;
+    min-height: 0;
   }
 }
 
