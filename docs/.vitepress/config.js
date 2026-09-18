@@ -1,13 +1,13 @@
 export default {
   base: '/',
   appearance: true,
-  title: '云族纪',
-  titleTemplate: '云族纪 - 家族管理应用',
-  description: '云族纪 - 家族管理应用：人际关系族谱网络 + 家族事务，支持分身体系、自动称呼、归档可逆、私有部署',
+  title: '云族记',
+  titleTemplate: '云族记 - 家族管理应用',
+  description: '云族记 - 家族管理应用：人际关系族谱网络 + 家族事务，支持分身体系、自动称呼、归档可逆、私有部署',
   lastUpdated: true,
   themeConfig: {
     logo: '/images/logo.png',
-    siteTitle: '云族纪',
+    siteTitle: '云族记',
     nav: [
       { text: '功能', link: '/guide/features' },
       {
@@ -84,7 +84,7 @@ export default {
     ],
     footer: {
       message: '私有部署 · 家族专用',
-      copyright: 'Copyright © 2024-present 云族纪'
+      copyright: 'Copyright © 2024-present 云族记'
     },
     lastUpdatedText: '上次更新',
     docFooter: {

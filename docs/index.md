@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: 云族纪
+  name: 云族记
   text: 一个属于自家人的家族管理应用
   tagline: 人际关系 + 家族事务两大模块 —— 记录真实的家族网络、自动推算称呼、隐私分层，数据掌握在自己手里
   image:
     src: /images/logo.png
-    alt: 云族纪
+    alt: 云族记
   actions:
     - theme: brand
       text: 了解更多
