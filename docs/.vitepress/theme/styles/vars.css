@@ -1,0 +1,9 @@
+/* 云族纪主题色 - 暖棕系 */
+:root {
+  --vp-c-brand-1: #8A5A2B;
+  --vp-c-brand-2: #6F4726;
+  --vp-c-brand-3: #A67B4B;
+  --vp-c-brand-softer: rgba(138, 90, 43, 0.12);
+  --vp-c-bg: #FBF4E4;
+  --vp-c-bg-alt: #F6EEDF;
+}

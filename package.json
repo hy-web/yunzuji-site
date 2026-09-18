@@ -1,0 +1,13 @@
+{
+  "name": "yunzuji-site",
+  "version": "1.0.0",
+  "description": "云族纪 - 家族族谱应用官方网站",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --port 8099",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.35"
+  }
+}

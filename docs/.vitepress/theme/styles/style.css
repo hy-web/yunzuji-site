@@ -1,0 +1,4 @@
+/* 云族纪自定义样式 */
+.home-hero {
+  background: linear-gradient(135deg, var(--vp-c-bg-alt) 0%, var(--vp-c-bg) 100%);
+}
