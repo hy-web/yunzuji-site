@@ -5,9 +5,6 @@ hero:
   name: 云族记
   text: 一个属于自家人的家族管理应用
   tagline: 人际关系 + 家族事务两大模块 —— 记录真实的家族网络、自动推算称呼、隐私分层，数据掌握在自己手里
-  image:
-    src: /images/logo.png
-    alt: 云族记
   actions:
     - theme: brand
       text: 了解更多
@@ -61,3 +58,15 @@ features:
     link: /guide/family-affairs
     linkText: 查看规划
 ---
+
+<StatBadges />
+
+<div class="home-preview">
+  <h2 class="home-section-title">产品形态预览</h2>
+  <p class="home-section-sub">界面仍在打磨，以下为各模块位置示意，正式截图随后替换</p>
+  <div class="home-phones">
+    <PhoneMockup variant="tree" label="族谱画布" topbar="人际关系" caption="族谱关系网络 · 长按节点操作" />
+    <PhoneMockup variant="relation" label="关系匹配" topbar="人际关系" caption="任选两人 · 双向称呼" />
+    <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="图文纪事 · 收支（建设中）" />
+  </div>
+</div>

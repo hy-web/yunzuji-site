@@ -1,5 +1,5 @@
 /* ============================================================
-   云族纪自定义样式
+   云族记自定义样式
    ============================================================ */
 
 /* 首页 hero 区：暖棕渐变，浅/暗两套由 vars.css 的变量驱动 */
@@ -14,14 +14,115 @@
     var(--yz-hero-gradient-from) 0%,
     var(--yz-hero-gradient-to) 100%
   );
+  position: relative;
 }
 
-/* 功能卡片：轻微暖底 + 细边框，暗色下同步 */
+/* hero 右上角一层极淡的暖色光晕，增加质感不喧宾夺主 */
+.VPHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    620px 320px at 82% -12%,
+    rgba(138, 90, 43, 0.1),
+    transparent 62%
+  );
+}
+.dark .VPHero::before {
+  background: radial-gradient(
+    620px 320px at 82% -12%,
+    rgba(208, 168, 119, 0.1),
+    transparent 62%
+  );
+}
+
+/* hero 右侧手机占位：覆盖默认图片容器样式并控制尺寸 */
+.VPHero .image-container {
+  width: auto;
+  min-width: 0;
+}
+.VPHero .image-container .image {
+  background: transparent;
+  width: auto;
+  height: auto;
+}
+.VPHero .pm-phone {
+  width: 250px;
+  height: 510px;
+}
+@media (max-width: 1180px) {
+  .VPHero .pm-phone {
+    width: 228px;
+    height: 466px;
+  }
+}
+/* 中屏以下 VitePress 堆叠排版，隐藏 hero 手机，避免压住标题；
+   首页功能卡之后的产品预览区仍会展示手机占位 */
+@media (max-width: 959px) {
+  .VPHero .image-container {
+    display: none !important;
+  }
+}
+
+/* 功能卡片：轻微暖底 + 细边框，暗色下同步；hover 轻微上浮 */
 .VPFeature {
   border: 1px solid var(--vp-c-divider);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-3);
+  box-shadow: 0 18px 38px -24px rgba(138, 90, 43, 0.6);
 }
 
 /* 让首页整体铺满渐变背景（默认 hero 与 features 之间会露出纯色） */
 .VPHome {
   background: var(--yz-hero-gradient-to);
+}
+
+/* ============================================================
+   首页功能卡之后的自定义区块：数据徽章 + 产品预览
+   ============================================================ */
+.home-preview {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 16px 24px 56px;
+  text-align: center;
+}
+.home-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin: 0 0 6px;
+}
+.home-section-sub {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  margin: 0 0 30px;
+}
+.home-phones {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.home-phones .pm-phone {
+  width: 236px;
+  height: 482px;
+}
+
+/* ============================================================
+   文档正文内的示意图 / 占位：控制宽度与居中
+   ============================================================ */
+.vp-doc figure {
+  max-width: 100%;
+}
+.vp-doc .dia .dia-svg {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  padding: 12px;
+  box-sizing: border-box;
 }

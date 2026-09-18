@@ -48,6 +48,10 @@
 - 普通成员浏览与查看已读情况
 - 外族人的可见范围同样受家族开放档位约束
 
+<div style="display:flex;justify-content:center;margin:28px 0;">
+  <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="图文纪事 · 老照片 · 收支（建设中）" />
+</div>
+
 ## 后续方向
 
 - 纪事与具体成员 / 事件挂钩（例如把一张老照片关联到族谱里的某位祖先）
