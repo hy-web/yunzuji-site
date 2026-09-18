@@ -1,5 +1,5 @@
 export default {
-  base: '/yunzuji-site/',
+  base: '/',
   appearance: 'light',
   title: '云族纪',
   titleTemplate: '云族纪 - 家族族谱应用',
