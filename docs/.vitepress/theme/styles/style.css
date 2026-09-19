@@ -37,34 +37,50 @@
   );
 }
 
-/* hero 右侧手机占位：覆盖默认图片容器样式并控制尺寸 */
+/* hero 右侧品牌标识：覆盖默认图片容器样式；浅色显黑墨版、深色显金墨版 */
 .VPHero .image-container {
   width: auto;
   min-width: 0;
 }
-.VPHero .pm-phone {
-  width: 250px;
-  height: 510px;
+.VPHero .brand-logo .bl-dark {
+  display: none;
 }
-@media (max-width: 1180px) {
-  .VPHero .pm-phone {
-    width: 228px;
-    height: 466px;
-  }
+html.dark .VPHero .brand-logo .bl-light {
+  display: none;
 }
-/* 中屏以下（≤959，与 VitePress 的 hero 堆叠断点对齐）：
-   手机插槽会让 hero 带上 has-image 布局。若只隐藏内层 .image-container，
-   外层 .image 仍保留负 margin、.container 高度仍按"有图"计算，会把文本区
-   顶到固定导航栏底下（name 顶部溢出为负）。这里整块隐藏 .image 并让容器
-   高度回归自适应，hero 即等同无图首页的正常堆叠；手机占位改由功能卡之后的
-   "产品形态预览"区展示。 */
-@media (max-width: 959px) {
+html.dark .VPHero .brand-logo .bl-dark {
+  display: block;
+}
+/* 深色下金色标识加一圈柔和暖光（浅色光晕写在组件 scoped 内） */
+html.dark .VPHero .brand-logo {
+  filter: drop-shadow(0 0 40px rgba(208, 168, 119, 0.28));
+}
+/* 中宽以下（≤1100px）隐藏 hero 右侧标识，给标题/副标题完整宽度：
+   hero 图片插槽会让 hero 带上 has-image 布局，只隐藏内层图片时外层 .image
+   仍保留负 margin、.container 高度按"有图"计算，会把文本顶到导航栏底下；
+   这里整块隐藏 .image 并让容器高度自适应。品牌标识在导航栏始终可见，
+   产品形态的手机占位由功能卡之后的"产品形态预览"区展示。 */
+@media (max-width: 1100px) {
   .VPHero .image {
     display: none !important;
   }
   .VPHero .container {
     height: auto;
     min-height: 0;
+  }
+}
+/* 960~1100px 官方仍是左右排版，隐藏标识后让文本改为居中堆叠，避免左半留白 */
+@media (min-width: 960px) and (max-width: 1100px) {
+  .VPHero .container {
+    flex-direction: column;
+  }
+  .VPHero .main {
+    max-width: none;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .VPHero .actions {
+    justify-content: center;
   }
 }
 
