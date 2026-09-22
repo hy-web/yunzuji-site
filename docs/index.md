@@ -53,10 +53,10 @@ features:
     link: /guide/deployment
     linkText: 如何部署
   - icon: 📔
-    title: 家族事务模块（建设中）
-    details: 与人际关系并列的第二模块：图文家族纪事、老照片画廊、已读反馈与家族收支，记录"发生了什么"
+    title: 家族事务模块
+    details: 与人际关系并列的第二模块：一本公开的家族活动记录册——信纸纪事、活动照片、收支台账与已读反馈，记录"发生了什么"
     link: /guide/family-affairs
-    linkText: 查看规划
+    linkText: 了解模块
 ---
 
 <StatBadges />
@@ -67,6 +67,6 @@ features:
   <div class="home-phones">
     <PhoneMockup variant="tree" label="族谱画布" topbar="人际关系" caption="族谱关系网络 · 长按节点操作" />
     <PhoneMockup variant="relation" label="关系匹配" topbar="人际关系" caption="任选两人 · 双向称呼" />
-    <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="图文纪事 · 收支（建设中）" />
+    <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="活动记录册 · 图文照片 · 收支台账" />
   </div>
 </div>

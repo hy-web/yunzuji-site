@@ -14,7 +14,7 @@ export default {
         text: '模块',
         items: [
           { text: '人际关系画布', link: '/guide/canvas' },
-          { text: '家族事务（建设中）', link: '/guide/family-affairs' }
+          { text: '家族事务', link: '/guide/family-affairs' }
         ]
       },
       {
@@ -51,7 +51,7 @@ export default {
         collapsed: false,
         items: [
           { text: '人际关系画布', link: '/guide/canvas' },
-          { text: '家族事务（建设中）', link: '/guide/family-affairs' }
+          { text: '家族事务', link: '/guide/family-affairs' }
         ]
       },
       {

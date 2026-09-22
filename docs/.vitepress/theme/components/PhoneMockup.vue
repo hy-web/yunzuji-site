@@ -96,6 +96,7 @@
         <span class="pm-tabbar-item pm-on"></span>
         <span class="pm-tabbar-item"></span>
         <span class="pm-tabbar-item"></span>
+        <span class="pm-tabbar-item"></span>
       </div>
     </div>
     <p v-if="caption" class="pm-caption">{{ caption }}</p>
