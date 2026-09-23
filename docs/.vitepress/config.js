@@ -1,6 +1,10 @@
 export default {
   base: '/',
   appearance: true,
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
+  ],
   title: '云族记',
   titleTemplate: '云族记 - 家族管理应用',
   description: '云族记 - 家族管理应用：人际关系族谱网络 + 家族事务，支持分身体系、自动称呼、归档可逆、私有部署',
