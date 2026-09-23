@@ -6,7 +6,7 @@ export default {
   description: '云族记 - 家族管理应用：人际关系族谱网络 + 家族事务，支持分身体系、自动称呼、归档可逆、私有部署',
   lastUpdated: true,
   themeConfig: {
-    logo: { light: '/images/logo.png', dark: '/images/logo-gold.png' },
+    logo: { light: '/images/logo-zu.png', dark: '/images/logo-zu-gold.png' },
     siteTitle: '云族记',
     nav: [
       { text: '功能', link: '/guide/features' },

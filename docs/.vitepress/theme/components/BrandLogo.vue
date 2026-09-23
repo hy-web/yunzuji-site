@@ -6,8 +6,8 @@
 -->
 <template>
   <div class="brand-logo">
-    <img class="bl-light" src="/images/logo.png" alt="云族记" />
-    <img class="bl-dark" src="/images/logo-gold.png" alt="云族记" />
+    <img class="bl-light" src="/images/logo-zu.png" alt="云族记" />
+    <img class="bl-dark" src="/images/logo-zu-gold.png" alt="云族记" />
   </div>
 </template>
 
