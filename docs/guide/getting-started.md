@@ -5,7 +5,7 @@
 ## 环境准备
 
 - **HBuilderX**：云族记基于 uni-app（Vue 3）开发，官方推荐使用 HBuilderX 编译
-- **uniCloud 账号**：用于创建阿里云服务空间（数据库、云函数、云存储都在上面）
+- **uniCloud 账号**：用于创建支付宝云服务空间（数据库、云函数、云存储都在上面）
 - **Node.js**：仅在需要命令行构建时使用
 
 ## 三步跑起来
@@ -17,8 +17,8 @@
 ### 2. 创建云服务空间
 
 1. 登录 [uniCloud 控制台](https://unicloud.dcloud.net.cn/)
-2. 创建一个**阿里云**服务空间
-3. 在 HBuilderX 中右键 `uniCloud-aliyun` 目录，关联刚创建的空间
+2. 创建一个**支付宝云**服务空间
+3. 在 HBuilderX 中右键 `uniCloud-alipay` 目录，关联刚创建的空间
 4. 右键 `database` 目录，上传所有 DB Schema（表结构会自动创建）
 5. 右键 `cloudfunctions` 目录，上传所有云函数
 

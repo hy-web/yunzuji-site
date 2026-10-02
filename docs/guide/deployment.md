@@ -26,7 +26,7 @@
 git clone https://gitee.com/hy_ATfield/YunZuJi.git
 
 # GitHub
-git clone https://github.com/hy_ATfield/YunZuJi.git
+git clone https://github.com/hy-web/YunZuJi.git
 ```
 
 然后用 HBuilderX「文件 → 打开目录」，选择项目根目录。
@@ -34,19 +34,19 @@ git clone https://github.com/hy_ATfield/YunZuJi.git
 ## 2. 创建并关联云服务空间
 
 1. 登录 [uniCloud 控制台](https://unicloud.dcloud.net.cn/)
-2. 创建一个**阿里云**服务空间（免费额度即可，按量付费）
-3. 回到 HBuilderX，右键项目里的 `uniCloud-aliyun` 目录
+2. 创建一个**支付宝云**服务空间（免费额度即可，按量付费）
+3. 回到 HBuilderX，右键项目里的 `uniCloud-alipay` 目录
 4. 选择「关联云服务空间或项目」，选中刚创建的空间
 
 ::: warning 注意服务商
-项目使用的是 **uniCloud 阿里云版**，不要选腾讯云版，两者的云函数和数据库不通用。
+项目使用的是 **uniCloud 支付宝云版**（目录 `uniCloud-alipay`），不要选阿里云或腾讯云版，云函数与数据库不通用。
 :::
 
 ## 3. 上传公共模块和云函数
 
 这是最容易漏的一步。云函数依赖公共模块，**必须一起上传**，否则会报找不到模块的错误。
 
-在 `uniCloud-aliyun/cloudfunctions/` 下：
+在 `uniCloud-alipay/cloudfunctions/` 下：
 
 **先上传公共模块**（右键 → 上传部署）：
 
@@ -62,7 +62,9 @@ git clone https://github.com/hy_ATfield/YunZuJi.git
 | `api-identity` | 真人认领、身份合并、分身管理 |
 | `api-transfer` | CSV / GEDCOM 导入导出 |
 | `api-record` | 家族图文记录与收支 |
-| `api-user` | 成员登记、头像、账号 |
+| `api-user` | 成员登记、账号 |
+| `api-avatar` | 头像上传 / 下载中转 |
+| `api-ai` | 家谱 AI 助手问答 |
 | `deleteCloudFile` | 删除云存储文件（带归属校验） |
 
 ::: warning 依赖关系
@@ -75,7 +77,7 @@ git clone https://github.com/hy_ATfield/YunZuJi.git
 
 数据表结构由 DB Schema 文件定义，上传后会自动建表、自动生成校验规则。
 
-- 右键 `uniCloud-aliyun/database` 目录 →「上传 DB Schema」
+- 右键 `uniCloud-alipay/database` 目录 →「上传 DB Schema」
 - 其中**用户表**（`uni-id-users`，同时也是家族成员表）的 schema 位于插件目录：
   `uni_modules/uni-id-pages/uniCloud/database/`，随 uni-id-pages 插件一起上传
 
@@ -105,6 +107,18 @@ uni-id 需要各端的密钥配置：
 
 首次进入应用会引导你：注册账号 → 创建/加入家族 → 录入始祖 → 开始添加成员。**第一个注册并建族的人自动成为该家族管理员。**
 
+## 6.5 微信小程序：配置服务器域名白名单
+
+**开发者工具里正常、真机上所有云调用报 `request:fail`**，几乎都是因为没在小程序后台配置服务器域名——「不校验合法域名」只对模拟器生效，真机一律强制校验。
+
+在 [微信公众平台](https://mp.weixin.qq.com/) → 开发 → 开发管理 → 开发设置 → 服务器域名，**一次性加齐**（每自然月仅可修改 5 次）：
+
+- **request**：`https://{你的空间id}.api-hz.cloudbasefunction.cn`
+- **uploadFile**：`https://u.object.cloudrun.cloudbaseapp.cn`
+- **downloadFile**：`https://{你的空间id}.normal.cloudstatic.cn` 与 `https://{你的空间id}-static.normal.cloudstatic.cn`
+
+保存后重新预览即生效，无需改动代码。
+
 ## 7.（可选）跑一遍回归测试
 
 项目自带 Node 无头测试，覆盖称呼算法、匿名净化、权限裁剪、导入组装等核心逻辑。在项目根目录：
@@ -127,7 +141,7 @@ node tests/run-all.mjs
 
 - **调用云函数报 500 / 找不到模块**：公共模块 `yz-family-core` 没上传，或上传后没重新上传依赖它的云函数。
 - **登录没反应 / token 报错**：`config.json` 没填，或当前平台的 appid/密钥不匹配。
-- **看不到数据 / 表不存在**：DB Schema 没上传，或关联的不是阿里云空间。
+- **看不到数据 / 表不存在**：DB Schema 没上传，或关联的不是支付宝云空间。
 - **小程序端空白**：确认用的是「全功能主画布」页面，旧的只读版画布已不维护。
 
 更多使用层面的问题见 [常见问题](../about/faq)。

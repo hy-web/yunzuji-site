@@ -25,8 +25,8 @@ features:
     link: /guide/architecture
     linkText: 数据模型
   - icon: 🗣️
-    title: 自动推算亲属称呼
-    details: 任意两个节点之间自动算出堂哥、表姐、姑父、二嫂……200 多条规则覆盖血亲、姻亲与双向称呼
+    title: 称呼可推算，也可自定义
+    details: 任意两人自动算出堂哥、表姐、姑父、二嫂；一套引擎支持多套称呼体系，可一键切换、逐条改词、自建并跨家族复制
     link: /guide/kinship-engine
     linkText: 称呼引擎
   - icon: 🔀
@@ -63,7 +63,7 @@ features:
 
 <div class="home-preview">
   <h2 class="home-section-title">产品形态预览</h2>
-  <p class="home-section-sub">界面仍在打磨，以下为各模块位置示意，正式截图随后替换</p>
+  <p class="home-section-sub">以下为各模块形态示意，正式真机截图随后替换</p>
   <div class="home-phones">
     <PhoneMockup variant="tree" label="族谱画布" topbar="人际关系" caption="族谱关系网络 · 长按节点操作" />
     <PhoneMockup variant="relation" label="关系匹配" topbar="人际关系" caption="任选两人 · 双向称呼" />

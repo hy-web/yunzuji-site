@@ -84,7 +84,7 @@ export default {
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/hy_ATfield/YunZuJi' },
+      { icon: 'github', link: 'https://github.com/hy-web/YunZuJi' },
     ],
     footer: {
       message: '私有部署 · 家族专用',
