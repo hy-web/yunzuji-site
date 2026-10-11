@@ -71,6 +71,7 @@ export default {
         text: '上手',
         collapsed: false,
         items: [
+          { text: '登录方式', link: '/guide/login-methods' },
           { text: '快速上手', link: '/guide/getting-started' },
           { text: '部署指南', link: '/guide/deployment' }
         ]
