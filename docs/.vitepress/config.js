@@ -83,9 +83,6 @@ export default {
         ]
       }
     ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/hy-web/YunZuJi' },
-    ],
     footer: {
       message: '私有部署 · 家族专用',
       copyright: 'Copyright © 2024-present 云族记'

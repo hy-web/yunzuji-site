@@ -19,15 +19,7 @@
 
 ## 1. 获取源码
 
-从代码仓库克隆或下载：
-
-```bash
-# Gitee
-git clone https://gitee.com/hy_ATfield/YunZuJi.git
-
-# GitHub
-git clone https://github.com/hy-web/YunZuJi.git
-```
+云族记为私有项目、源码暂未公开，通过私有交付获得项目源码。
 
 然后用 HBuilderX「文件 → 打开目录」，选择项目根目录。
 
@@ -64,6 +56,9 @@ git clone https://github.com/hy-web/YunZuJi.git
 | `api-record` | 家族图文记录与收支 |
 | `api-user` | 成员登记、账号 |
 | `api-avatar` | 头像上传 / 下载中转 |
+| `api-captcha` | 登录图形验证码下发与核销 |
+| `api-sms` | 手机短信验证码下发（阿里云号码认证） |
+| `api-version` | 下发最新版本信息，供 App 检查更新 |
 | `api-ai` | 家谱 AI 助手问答 |
 | `deleteCloudFile` | 删除云存储文件（带归属校验） |
 
@@ -101,7 +96,7 @@ uni-id 需要各端的密钥配置：
 
 在 HBuilderX 顶部「运行」菜单选择目标平台：
 
-- **运行到浏览器（H5）**：最快验证，浏览器里直接打开，账号密码登录
+- **运行到浏览器（H5）**：最快验证，浏览器里直接打开，首推手机短信验证码登录、账号密码为备选
 - **运行到小程序模拟器（微信小程序）**：需安装[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)并开启服务端口，小程序端为免密登录
 - **运行到手机 / App**：真机联调，或通过「发行」打包
 
@@ -118,6 +113,47 @@ uni-id 需要各端的密钥配置：
 - **downloadFile**：`https://{你的空间id}.normal.cloudstatic.cn` 与 `https://{你的空间id}-static.normal.cloudstatic.cn`
 
 保存后重新预览即生效，无需改动代码。
+
+## 6.6 手机短信验证码登录配置
+
+H5 / App 首推手机短信验证码登录，短信走阿里云「**号码认证服务**」（dypnsapi）。⚠️ **不是「短信服务」dysms**——后者需企业资质与签名实名报备，个人账号用不了。
+
+1. 在阿里云控制台开通「号码认证服务 → 短信认证」
+2. 直接使用平台提供的**赠送签名**与**赠送模板**（登录 / 注册场景，内含验证码与时效变量），无需、也无法申请自定义签名
+3. 创建一个 **RAM 用户**，只授予 `dypns:SendSmsVerifyCode` 这一条权限（切勿给管理员权限）
+4. 把该 RAM 用户的 AccessKey 填入 `api-sms` 云函数的密钥文件 `secret.json`（参照同目录 `secret.example.json`，**不入库**）
+5. 右键上传部署 `api-sms`；防刷用的图形验证码由 `api-captcha` 提供，一并上传
+
+::: danger 密钥不入库
+`api-sms/secret.json` 含 AccessKey，已在 `.gitignore` 忽略，切勿提交，也不会下发到前端。
+:::
+
+## 6.7 Android App 云打包（自装、不上架）
+
+云族记 Android 端采用 DCloud 云打包、自装分发，不上架应用市场：
+
+1. HBuilderX 顶部「发行 → 原生 App-云打包」，选 Android、使用**云端证书**（免自建签名证书）
+2. 打包前确认 `manifest.json` 已勾选所需模块：**Camera 相机、Gallery 相册、OAuth（App 端微信登录）**
+3. 应用图标、启动页在 `manifest.json` 配置（项目图标资源在 `static/app-icons/`）
+4. 打出 APK 后发到家族群，长辈在手机上打开安装（首次需允许"安装未知来源应用"）
+
+::: warning manifest 配置
+`manifest.json` 若带注释（JSONC），命令行处理可能解析失败；云打包前确认语法正确、所需模块完整。
+:::
+
+## 6.8 App 检查更新与发版（整包更新）
+
+App 启动时会静默调用 `api-version` 比对版本，发现新版本弹窗提示，用户确认后下载整包 APK 覆盖安装（**整包更新**，非热更新）。版本号按**多段式逐段比较**（`1.0.10 > 1.0.9`，不是字符串比较）。
+
+**每次发版三步**：
+
+1. 云打包出新 APK，上传到本服务空间的**云存储**（文件夹设为公开、建议路径 `app/`）
+2. 把该 APK 的下载直链填到 `api-version/index.js` 的 `LATEST.url`
+3. 改 `LATEST.version`（与 `manifest.json` 的 versionName 逐字一致）与 `LATEST.note`（更新说明），右键上传部署 `api-version`
+
+::: tip 版本号必须来自云端
+最新版本号不能写在 App 里——它随包发布，旧包永远读到旧值、会误判"已是最新"；只能由 `api-version` 实时下发。
+:::
 
 ## 7.（可选）跑一遍回归测试
 
