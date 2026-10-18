@@ -1,12 +1,21 @@
 <template>
-  <figure class="pf-figure">
-    <div class="pf-frame" :style="{ aspectRatio: ratio }">
+  <figure class="pf-figure" :style="maxWidth ? { maxWidth } : undefined">
+    <div
+      class="pf-frame"
+      :class="src ? 'pf-frame--shot' : 'pf-frame--placeholder'"
+      :style="{ aspectRatio: ratio }"
+    >
       <!-- 模拟窗口顶栏 -->
       <div v-if="chrome" class="pf-chrome">
         <span class="pf-dots"><i></i><i></i><i></i></span>
         <span class="pf-url">{{ chrome }}</span>
       </div>
-      <div class="pf-body">
+
+      <!-- 真实截图 -->
+      <img v-if="src" class="pf-shot" :src="src" :alt="title" />
+
+      <!-- 占位 -->
+      <div v-else class="pf-body">
         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" aria-hidden="true">
           <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
           <circle cx="8.5" cy="10.5" r="1.6" stroke="currentColor" stroke-width="1.5"/>
@@ -22,23 +31,35 @@
 
 <script setup>
 defineProps({
+  src: { type: String, default: '' }, // 传入真实截图地址则显示图片，否则显示虚线占位
   title: { type: String, default: '此处放置功能截图' },
   hint: { type: String, default: '' },
   ratio: { type: String, default: '16 / 9' },
+  maxWidth: { type: String, default: '' }, // 限制整框最大宽度（竖屏手机截图时收缩居中）
   chrome: { type: String, default: '' }, // 传入文字则显示窗口顶栏
   caption: { type: String, default: '' }
 })
 </script>
 
 <style scoped>
-.pf-figure { margin: 20px 0; }
+.pf-figure { margin: 20px auto; }
 .pf-frame {
-  border: 2px dashed var(--vp-c-brand-3);
   border-radius: 14px;
   overflow: hidden;
-  background: var(--vp-c-brand-soft);
   display: flex; flex-direction: column;
 }
+/* 占位态：虚线边框 */
+.pf-frame--placeholder {
+  border: 2px dashed var(--vp-c-brand-3);
+  background: var(--vp-c-brand-soft);
+}
+/* 真实截图态：实线细边框 + 柔和投影 */
+.pf-frame--shot {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.25);
+}
+.pf-shot { width: 100%; flex: 1; min-height: 0; object-fit: cover; display: block; }
 .pf-chrome {
   height: 30px; flex: none;
   display: flex; align-items: center; gap: 10px;

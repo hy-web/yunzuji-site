@@ -35,10 +35,11 @@
 它底层调用的就是[称呼计算引擎](./kinship-engine)，所以无论关系里隔了几代、几段婚姻，结果都和节点上显示的称呼保持一致。
 
 <PlaceholderFrame
-  title="关系匹配面板截图"
-  hint="任选两人 · 分身轮播 · 双向称呼 · 关系路径高亮"
-  ratio="16 / 10"
-  caption="界面完善后在此替换为真实截图" />
+  src="/images/screens/relation-panel.png"
+  title="关系匹配面板"
+  ratio="9 / 19.5"
+  maxWidth="300px"
+  caption="拖入两个节点 · 中间双向配对 · 下方画布照常查看" />
 
 ## 工具栏能力
 
@@ -67,11 +68,11 @@
 在配偶家、外亲家视角下，这些矩形能让人一眼看清"哪些人算近亲、哪些是外亲"。
 
 <PlaceholderFrame
-  title="族谱画布全景截图（H5）"
-  hint="右下角工具栏 · 节点与连线 · 近亲识别矩形"
-  ratio="16 / 9"
-  chrome="yunzuji · H5 画布"
-  caption="界面完善后在此替换为真实截图" />
+  src="/images/screens/canvas-full.png"
+  title="族谱画布全景"
+  ratio="9 / 19.5"
+  maxWidth="300px"
+  caption="节点与三种关系连线 · 右侧工具栏 · 缩放滑块 · 近亲识别矩形" />
 
 ## 画布交互
 

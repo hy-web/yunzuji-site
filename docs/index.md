@@ -63,10 +63,10 @@ features:
 
 <div class="home-preview">
   <h2 class="home-section-title">产品形态预览</h2>
-  <p class="home-section-sub">以下为各模块形态示意，正式真机截图随后替换</p>
+  <p class="home-section-sub">线上 H5 真机截图（移动视图）· 深色外观，支持浅色 / 深色 / 跟随系统</p>
   <div class="home-phones">
-    <PhoneMockup variant="tree" label="族谱画布" topbar="人际关系" caption="族谱关系网络 · 长按节点操作" />
-    <PhoneMockup variant="relation" label="关系匹配" topbar="人际关系" caption="任选两人 · 双向称呼" />
-    <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="活动记录册 · 图文照片 · 收支台账" />
+    <PhoneMockup src="/images/screens/canvas-full.png" label="族谱画布" caption="族谱关系网络 · 三种关系类型 · 近亲识别" />
+    <PhoneMockup src="/images/screens/relation-panel.png" label="关系匹配" caption="拖入两人 · 即时推算双向称呼" />
+    <PhoneMockup src="/images/screens/record-list.png" label="家族事务" caption="活动记录册 · 图文照片 · 收支台账" />
   </div>
 </div>

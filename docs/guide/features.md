@@ -91,6 +91,15 @@
 
 登录注册页全部自建，提供**微信一键登录、短信验证码登录、账号密码登录**三种方式：不同平台首推最省事的一种，其余作为备选，三种方式还能互相补齐为同一个账号。各方式的适用场景、隐私取舍与配套账号管理，详见[登录方式](./login-methods)。
 
+### 「我的」页面 · 登录前后
+
+「我的」是整个应用的功能导航中心。未登录时，三个主页面都采用**书法 Logo 空态**——一句提示 + 登录入口，不堆无意义功能（首页「族」、记录「记」、我的「我」）；登录后按「家族功能 / 设置 / 安全」分组，入口一目了然。
+
+<div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:24px 0;">
+  <PhoneMockup src="/images/screens/my-guest.png" label="我的 · 未登录" caption="「我」字 Logo · 空态引导" />
+  <PhoneMockup src="/images/screens/my-user.png" label="我的 · 登录后" caption="个人卡片 · 家族功能 · 设置 · 安全" />
+</div>
+
 ### 深色模式与 AI 助手
 
 - **深色模式**：全站支持浅色 / 深色一键切换，古籍暖棕风在夜间同样柔和、不刺眼

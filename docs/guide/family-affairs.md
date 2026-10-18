@@ -31,11 +31,11 @@
 
 ## 一条记录长什么样
 
-家族事务在底部导航栏是独立的「**记录**」入口。底部导航共四个入口：**首页 / 记录 / 关系 / 我的**。
+家族事务在底部导航栏是独立的「**记录**」入口。底部导航共三个入口：**首页 / 记录 / 我的**（族谱画布从「我的 → 人际关系」进入）。
 
 **记录列表**
 
-- 分「在记 / 已存档」两段，按时间排列，进行中、需要关注的活动在前
+- 未登录时为「记」字 Logo 空态引导；登录后分「在记 / 已存档」两段，按时间排列，进行中、需要关注的活动在前
 - 管理员有发布入口，可对记录做编辑、存档、恢复，并查看已读；普通成员只浏览
 - 点进一条记录，先看到一张"记录纸"
 
@@ -63,8 +63,10 @@
 - 发布者能看到**谁看过**这条记录，重要通知不会"发了没人知道看没看"
 - 过期活动可存档：存档后变为只读，但**仍然对全员可见**，相当于归入册尾；需要时还能一键恢复
 
-<div style="display:flex;justify-content:center;margin:28px 0;">
-  <PhoneMockup variant="list" label="家族事务" topbar="记录" caption="活动记录册 · 图文纪事 · 收支台账" />
+<div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:28px 0;">
+  <PhoneMockup src="/images/screens/record-list.png" label="记录列表" caption="在记 / 已存档 · 按时间排列" />
+  <PhoneMockup src="/images/screens/detail-letter.png" label="一张记录纸" caption="信纸纪事 · 书法排版" />
+  <PhoneMockup src="/images/screens/detail-ledger.png" label="收支台账" caption="收入 / 支出汇总与明细" />
 </div>
 
 ## 角色与权限

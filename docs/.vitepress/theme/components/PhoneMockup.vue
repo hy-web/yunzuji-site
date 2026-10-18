@@ -6,93 +6,98 @@
 
       <!-- 屏幕内容 -->
       <div class="pm-screen">
-        <!-- 顶部标题条 -->
-        <div class="pm-topbar">
-          <span class="pm-topbar-title">{{ topbar }}</span>
-          <span class="pm-topbar-dot"></span>
-        </div>
+        <!-- 真实截图：全屏填充 -->
+        <img v-if="src" class="pm-shot" :src="src" :alt="label" />
 
-        <!-- 族谱树线框 -->
-        <svg v-if="variant === 'tree'" class="pm-art" viewBox="0 0 240 360" fill="none" aria-hidden="true">
-          <!-- 连线：始祖 → 父母辈 -->
-          <path d="M120 66 V92 H76 V104" class="pm-line" />
-          <path d="M120 92 H164 V104" class="pm-line" />
-          <!-- 婚姻连线（夫妻） -->
-          <path d="M98 119 H142" class="pm-line pm-line-mate" />
-          <!-- 父母辈 → 子嗣 -->
-          <path d="M120 134 V158 H68 V170" class="pm-line" />
-          <path d="M120 158 H120 V170" class="pm-line" />
-          <path d="M120 158 H172 V170" class="pm-line" />
-          <!-- 子嗣 → 再下一代（右侧一支） -->
-          <path d="M172 200 V222 H150 V234" class="pm-line" />
-          <path d="M172 222 H196 V234" class="pm-line" />
-
-          <!-- 始祖 -->
-          <rect x="88" y="36" width="64" height="30" rx="6" class="pm-node pm-node-root" />
-          <text x="120" y="55" class="pm-node-text">始祖</text>
-          <!-- 父母辈：本家 + 配偶（配偶虚线） -->
-          <rect x="54" y="104" width="44" height="26" rx="6" class="pm-node" />
-          <text x="76" y="121" class="pm-node-text-sm">本人</text>
-          <rect x="142" y="104" width="44" height="26" rx="6" class="pm-node pm-node-mate" />
-          <text x="164" y="121" class="pm-node-text-sm">配偶</text>
-          <!-- 子嗣三个 -->
-          <rect x="46" y="170" width="44" height="26" rx="6" class="pm-node" />
-          <rect x="98" y="170" width="44" height="26" rx="6" class="pm-node" />
-          <rect x="150" y="170" width="44" height="26" rx="6" class="pm-node pm-node-mate" />
-          <!-- 匿名节点 "？" -->
-          <rect x="128" y="234" width="44" height="26" rx="6" class="pm-node pm-node-anon" />
-          <text x="150" y="252" class="pm-node-text-sm pm-anon-q">?</text>
-          <rect x="174" y="234" width="44" height="26" rx="6" class="pm-node" />
-        </svg>
-
-        <!-- 关系匹配线框 -->
-        <svg v-else-if="variant === 'relation'" class="pm-art" viewBox="0 0 240 360" fill="none" aria-hidden="true">
-          <path d="M56 110 V140 H92 V158" class="pm-line" />
-          <path d="M184 110 V140 H148 V158" class="pm-line" />
-          <rect x="22" y="76" width="68" height="34" rx="7" class="pm-node pm-node-root" />
-          <text x="56" y="97" class="pm-node-text">陆某</text>
-          <rect x="150" y="76" width="68" height="34" rx="7" class="pm-node pm-node-root" />
-          <text x="184" y="97" class="pm-node-text">黄某</text>
-
-          <rect x="36" y="158" width="168" height="92" rx="12" class="pm-rel-card" />
-          <text x="120" y="184" class="pm-rel-label">陆某 称 黄某</text>
-          <text x="120" y="212" class="pm-rel-big">二表哥</text>
-          <text x="120" y="236" class="pm-rel-label">黄某 称 陆某：三表妹</text>
-
-          <circle cx="108" cy="290" r="5" class="pm-dot pm-dot-on" />
-          <circle cx="120" cy="290" r="5" class="pm-dot" />
-          <circle cx="132" cy="290" r="5" class="pm-dot" />
-          <text x="120" y="314" class="pm-node-text-sm">切换分身</text>
-        </svg>
-
-        <!-- 事务列表线框 -->
-        <div v-else class="pm-list">
-          <div class="pm-list-tabs">
-            <span class="pm-tab pm-tab-on"></span><span class="pm-tab"></span>
+        <template v-else>
+          <!-- 顶部标题条 -->
+          <div class="pm-topbar">
+            <span class="pm-topbar-title">{{ topbar }}</span>
+            <span class="pm-topbar-dot"></span>
           </div>
-          <div v-for="n in 4" :key="n" class="pm-list-card">
-            <span class="pm-list-thumb"></span>
-            <span class="pm-list-lines">
-              <i class="pm-line-long"></i>
-              <i class="pm-line-short"></i>
-            </span>
-          </div>
-          <div class="pm-fab"></div>
-        </div>
 
-        <!-- 占位遮罩标签 -->
-        <div class="pm-placeholder">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
-            <path d="M4 8h3l2-2h6l2 2h3v11H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+          <!-- 族谱树线框 -->
+          <svg v-if="variant === 'tree'" class="pm-art" viewBox="0 0 240 360" fill="none" aria-hidden="true">
+            <!-- 连线：始祖 → 父母辈 -->
+            <path d="M120 66 V92 H76 V104" class="pm-line" />
+            <path d="M120 92 H164 V104" class="pm-line" />
+            <!-- 婚姻连线（夫妻） -->
+            <path d="M98 119 H142" class="pm-line pm-line-mate" />
+            <!-- 父母辈 → 子嗣 -->
+            <path d="M120 134 V158 H68 V170" class="pm-line" />
+            <path d="M120 158 H120 V170" class="pm-line" />
+            <path d="M120 158 H172 V170" class="pm-line" />
+            <!-- 子嗣 → 再下一代（右侧一支） -->
+            <path d="M172 200 V222 H150 V234" class="pm-line" />
+            <path d="M172 222 H196 V234" class="pm-line" />
+
+            <!-- 始祖 -->
+            <rect x="88" y="36" width="64" height="30" rx="6" class="pm-node pm-node-root" />
+            <text x="120" y="55" class="pm-node-text">始祖</text>
+            <!-- 父母辈：本家 + 配偶（配偶虚线） -->
+            <rect x="54" y="104" width="44" height="26" rx="6" class="pm-node" />
+            <text x="76" y="121" class="pm-node-text-sm">本人</text>
+            <rect x="142" y="104" width="44" height="26" rx="6" class="pm-node pm-node-mate" />
+            <text x="164" y="121" class="pm-node-text-sm">配偶</text>
+            <!-- 子嗣三个 -->
+            <rect x="46" y="170" width="44" height="26" rx="6" class="pm-node" />
+            <rect x="98" y="170" width="44" height="26" rx="6" class="pm-node" />
+            <rect x="150" y="170" width="44" height="26" rx="6" class="pm-node pm-node-mate" />
+            <!-- 匿名节点 "？" -->
+            <rect x="128" y="234" width="44" height="26" rx="6" class="pm-node pm-node-anon" />
+            <text x="150" y="252" class="pm-node-text-sm pm-anon-q">?</text>
+            <rect x="174" y="234" width="44" height="26" rx="6" class="pm-node" />
           </svg>
-          <span>截图占位</span>
-          <small>{{ label }}</small>
-        </div>
+
+          <!-- 关系匹配线框 -->
+          <svg v-else-if="variant === 'relation'" class="pm-art" viewBox="0 0 240 360" fill="none" aria-hidden="true">
+            <path d="M56 110 V140 H92 V158" class="pm-line" />
+            <path d="M184 110 V140 H148 V158" class="pm-line" />
+            <rect x="22" y="76" width="68" height="34" rx="7" class="pm-node pm-node-root" />
+            <text x="56" y="97" class="pm-node-text">陆某</text>
+            <rect x="150" y="76" width="68" height="34" rx="7" class="pm-node pm-node-root" />
+            <text x="184" y="97" class="pm-node-text">黄某</text>
+
+            <rect x="36" y="158" width="168" height="92" rx="12" class="pm-rel-card" />
+            <text x="120" y="184" class="pm-rel-label">陆某 称 黄某</text>
+            <text x="120" y="212" class="pm-rel-big">二表哥</text>
+            <text x="120" y="236" class="pm-rel-label">黄某 称 陆某：三表妹</text>
+
+            <circle cx="108" cy="290" r="5" class="pm-dot pm-dot-on" />
+            <circle cx="120" cy="290" r="5" class="pm-dot" />
+            <circle cx="132" cy="290" r="5" class="pm-dot" />
+            <text x="120" y="314" class="pm-node-text-sm">切换分身</text>
+          </svg>
+
+          <!-- 事务列表线框 -->
+          <div v-else class="pm-list">
+            <div class="pm-list-tabs">
+              <span class="pm-tab pm-tab-on"></span><span class="pm-tab"></span>
+            </div>
+            <div v-for="n in 4" :key="n" class="pm-list-card">
+              <span class="pm-list-thumb"></span>
+              <span class="pm-list-lines">
+                <i class="pm-line-long"></i>
+                <i class="pm-line-short"></i>
+              </span>
+            </div>
+            <div class="pm-fab"></div>
+          </div>
+
+          <!-- 占位遮罩标签 -->
+          <div class="pm-placeholder">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+              <path d="M4 8h3l2-2h6l2 2h3v11H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <span>截图占位</span>
+            <small>{{ label }}</small>
+          </div>
+        </template>
       </div>
 
-      <!-- 底部 tab bar -->
-      <div class="pm-tabbar">
+      <!-- 底部 tab bar（仅占位态显示，真实截图自带） -->
+      <div v-if="!src" class="pm-tabbar">
         <span class="pm-tabbar-item pm-on"></span>
         <span class="pm-tabbar-item"></span>
         <span class="pm-tabbar-item"></span>
@@ -105,7 +110,8 @@
 
 <script setup>
 defineProps({
-  variant: { type: String, default: 'tree' }, // tree | list
+  variant: { type: String, default: 'tree' }, // tree | relation | list
+  src: { type: String, default: '' }, // 传入真实截图地址则全屏显示，否则显示线框占位
   label: { type: String, default: '族谱画布' },
   topbar: { type: String, default: '人际关系' },
   caption: { type: String, default: '' }
@@ -144,6 +150,14 @@ defineProps({
   display: flex; flex-direction: column;
 }
 
+/* 真实截图：全屏填充、顶部对齐 */
+.pm-shot {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+
 .pm-topbar {
   height: 46px; flex: none;
   display: flex; align-items: center; justify-content: space-between;
@@ -155,7 +169,7 @@ defineProps({
 .pm-art { width: 100%; flex: 1; }
 .pm-line { stroke: var(--vp-c-brand-3); stroke-width: 1.4; opacity: 0.7; }
 .pm-line-mate { stroke-dasharray: 3 3; opacity: 0.55; }
-.pm-node { fill: var(--vp-c-bg); stroke: var(--vp-c-brand-3); stroke-width: 1.3; }
+.pm-node { fill: var(--vp-c-bg); stroke: var(--vp-c-brand-3); stroke-width:1.3; }
 .pm-node-root { fill: var(--vp-c-brand-soft); stroke: var(--vp-c-brand-1); stroke-width: 1.5; }
 .pm-node-mate { stroke-dasharray: 3 3; }
 .pm-node-anon { fill: var(--vp-c-bg-alt); stroke: var(--vp-c-text-3); stroke-width: 1.2; stroke-dasharray: 2 2; }

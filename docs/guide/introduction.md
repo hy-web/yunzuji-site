@@ -13,6 +13,11 @@
 
 两者共享同一套账号、家族与权限体系，但数据相互独立：删一条事务记录不会动族谱，整理族谱也不会影响纪事。
 
+<div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:28px 0;">
+  <PhoneMockup src="/images/screens/home-guest.png" label="首页 · 未登录" caption="「族」字 Logo · 登录引导" />
+  <PhoneMockup src="/images/screens/home-user.png" label="首页 · 登录后" caption="青溪村 · 陈氏：亲缘图 / 理家务两大入口" />
+</div>
+
 ## 传统族谱软件的问题
 
 人际关系这部分，大多数工具画的是一棵"树"——从上到下，父传子、子传孙。这在传统父系社会里够用，但现实中的家族关系远比树复杂：
